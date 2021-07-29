@@ -3,9 +3,5 @@
     "role": "project-back-end-executor",
     "name": "project-back-end",
     "region": "eu-west-2"
-  },
-  "api": {
-    "id": "dp70mvtg1g",
-    "module": "app"
   }
 }
