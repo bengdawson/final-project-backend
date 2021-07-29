@@ -20,7 +20,7 @@ function loadDatabase() {
   return new Promise((resolve, reject) => {
     const db = {};
     const sequelize = new Sequelize("titan", "admin", "teamtitan", {
-      host: 'titan.team-titan.cjsrixc7budk.eu-west-2.rds.amazonaws.com"',
+      host:'titan.team-titan.cjsrixc7budk.eu-west-2.rds.amazonaws.com',
       dialect: "mysql",
       port: "3306",
       pool: {

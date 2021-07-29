@@ -10,13 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "mysql2": "^2.2.5",
     "nvm": "^0.0.4",
     "sequelize": "^6.6.5"
-=======
-    "mysql2": "^2.2.5"
->>>>>>> 3d1d0ac7cf5b16e6db48c62bcace541bfcd169fa
   },
   "devDependencies": {
     "claudia": "^5.13.1"
