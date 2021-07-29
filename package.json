@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql2": "^2.2.5"
+    "mysql2": "^2.2.5",
+    "nvm": "^0.0.4",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "claudia": "^5.13.1"
   }
 }
