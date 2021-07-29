@@ -4,12 +4,21 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "claudia create --name titan --region eu-west-2 --api-module app ",
+    "deploy": "claudia update --use-local-dependencies"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql2": "^2.2.5"
+    "claudia-api-builder": "^4.1.2",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "claudia": "^5.13.1"
   }
 }

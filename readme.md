@@ -9,7 +9,7 @@ You should be able to log into AWS using the IAM user option on https://aws.amaz
 Install workbench from here:
 https://dev.mysql.com/downloads/workbench/
 On workbench, go Database > Connect to Database
-Insert team-titan.cjsrixc7budk.eu-west-2.rds.amazonaws.com into the Hostname Box
+Insert titan.cjsrixc7budk.eu-west-2.rds.amazonaws.com into the Hostname Box
 Username and password are in slack.
 You should see two Schemas on the left, sys and titan
 
