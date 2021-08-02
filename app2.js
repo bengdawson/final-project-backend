@@ -62,11 +62,14 @@ function getUsers(db) {
   });
 } */
 
-var ApiBuilder = require("claudia-api-builder");
+/* var ApiBuilder = require("claudia-api-builder");
 
 const api = new ApiBuilder();
 const mysql = require("mysql2");
-module.exports = api;
+module.exports = api; */
+
+const mysql = require("mysql2");
+
 
 const dotenv = require("dotenv");
 
@@ -79,14 +82,18 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
 });
+
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected!");
 });
 
-connection.query("SELECT * FROM users", (err, rows) => {
+  connection.query("SELECT * FROM users", (err, rows) => {
   if (err) throw err;
 
   console.log("Data received");
   console.log(rows);
-});
+});   
+
+
+

@@ -84,3 +84,7 @@ Then insert the access keys.
 - Default output format [None]: `JSON`
 
 Ignore the profile section - the above will create a default profile which will be used automatically.
+
+```
+npm i -s dotenv
+```
