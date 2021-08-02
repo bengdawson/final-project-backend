@@ -1,7 +1,0 @@
-{
-  "lambda": {
-    "role": "project-back-end-executor",
-    "name": "project-back-end",
-    "region": "eu-west-2"
-  }
-}

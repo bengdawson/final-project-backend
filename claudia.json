@@ -5,7 +5,8 @@
     "region": "eu-west-2"
   },
   "api": {
-    "id": "dp70mvtg1g",
-    "module": "app"
+    "id": "7drjlfcqol",
+    "module": "app",
+    "url": "https://7drjlfcqol.execute-api.eu-west-2.amazonaws.com/latest"
   }
 }
