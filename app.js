@@ -2,8 +2,9 @@ const ApiBuilder = require("claudia-api-builder");
 const api = new ApiBuilder();
 const mysql = require("mysql2/promise");
 const express = require("express");
+const pool = require("./middleware/pool");
 
-const pool = require("./middleware/database.js").pool;
+console.log(pool);
 
 api.get(
   "/users",
@@ -15,13 +16,15 @@ api.get(
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
 
-// async function userTest() {
-//   const rows = await pool.query("SELECT * FROM users;");
-//   const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
-//   return result;
-// }
-
-// userTest();
+api.get(
+  "/orgs",
+  async function () {
+    const rows = await pool.query("SELECT * FROM orgs;");
+    const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
+    return { orgs: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
 
 api.get("/", function () {
   return "Hello world!";
