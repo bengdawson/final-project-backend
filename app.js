@@ -103,6 +103,21 @@ api.get(
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
 
+// GET all the opportunities by organisation name.
+
+api.get(
+  "/opportunities/orgs/{opp_owner}",
+  async function ({ pathParams }) {
+    const params = pathParams["opp_owner"].replace(/%20/g, " ");
+    const rows = await pool.query(
+      `SELECT * FROM opportunities WHERE opp_owner= "${params}";`
+    );
+    const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
+    return { opportunities: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 //OPPORTUNITIES
 
 //GET opportunities by category
@@ -178,6 +193,21 @@ api.get(
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
 
+// GET applicants by opportunity id.
+
+api.get(
+  "/applications/opportunities/{opp_id}",
+  async function ({ pathParams }) {
+    const params = pathParams.opp_id;
+    const rows = await pool.query(
+      `SELECT username, status, name, opp_date FROM applications RIGHT JOIN opportunities ON applications.opp_id = opportunities.opp_id WHERE applications.opp_id ="${params}" ; `
+    );
+    const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
+    return { applicants: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 //CATEGORIES
 
 //GET all categories
@@ -195,7 +225,6 @@ api.get(
 //API
 
 //ADD THE ENDPOINTS TO HERE
-
 
 api.get("/", function () {
   return "Hello world!";
