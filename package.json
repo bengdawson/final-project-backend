@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "lint": "eslint ./",
     "prepare": "husky install",
     "fix": "npx eslint ./ --fix"
@@ -16,6 +16,7 @@
     "claudia-api-builder": "^4.1.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "husky": "^7.0.1",
     "mysql2": "^2.2.5",
     "nvm": "^0.0.4",
     "sequelize": "^6.6.5",
@@ -23,7 +24,6 @@
   },
   "devDependencies": {
     "claudia": "^5.13.1",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.1"
+    "eslint": "^7.32.0"
   }
 }
