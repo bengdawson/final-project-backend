@@ -196,6 +196,7 @@ api.get(
 
 //ADD THE ENDPOINTS TO HERE
 
+
 api.get("/", function () {
   return "Hello world!";
 });
