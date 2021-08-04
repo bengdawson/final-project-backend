@@ -7,6 +7,34 @@ const pool = require("./middleware/pool");
 
 // USERS
 
+//PATCH single user by username
+api.patch(
+  "/users/{username}",
+  async function ({ body, pathParams }) {
+    const { username } = pathParams;
+    const newUsername = body.newUsername;
+    const newAvatar_url = body.newAvatar_url;
+    let queryStr = "UPDATE users SET ";
+    if (newUsername) {
+      queryStr += `username="${newUsername}"`;
+    }
+    if (newUsername && newAvatar_url) {
+      queryStr += ", ";
+    }
+    if (newAvatar_url) {
+      queryStr += `avatar_url="${newAvatar_url}"`;
+    }
+    queryStr += `WHERE username="${username}";`;
+
+    console.log(queryStr);
+
+    const patchedUser = await pool.query(queryStr);
+    return { user_updated: "you updated the user!" };
+    // UPDATE user SET username="${newUsername}", avatar_url="${newAvatar_url}" WHERE username="${username}";
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 // GET single user by username
 
 api.get(
@@ -120,6 +148,20 @@ api.get(
 
 //OPPORTUNITIES
 
+//DELETE opportunities by id
+
+api.delete(
+  "/opportunities/delete/{opp_id}",
+  async function ({ pathParams }) {
+    const { opp_id } = pathParams;
+    const deletedOpp = await pool.query(
+      `DELETE FROM opportunities WHERE opp_id= "${opp_id}"`
+    );
+    return { opportunity_deleted: "you deleted the opportunity" };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 //GET opportunities by category
 
 api.get(
@@ -161,7 +203,7 @@ api.post(
     );
     return { opp_posted: "new opportunity posted" };
   },
-  { success: { contentType: "application/json" }, error: { code: 404 } }
+  { success: { contentType: "application/json" }, error: { code: 403 } }
 );
 
 //APPLICATIONS
@@ -189,6 +231,20 @@ api.get(
     );
     const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
     return { applications: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
+//DELETE application by id
+
+api.delete(
+  "/applications/delete/{app_id}",
+  async function ({ pathParams }) {
+    const { app_id } = pathParams;
+    const deletedApp = await pool.query(
+      `DELETE FROM applications WHERE app_id= "${app_id}"`
+    );
+    return { application_deleted: "you deleted the application" };
   },
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
