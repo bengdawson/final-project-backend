@@ -162,7 +162,6 @@ api.get(
   "/opportunities/{category}",
   async function ({ pathParams }) {
     const params = pathParams["category"].replace(/%20/g, " ");
-    // const paramsReplaced = params.replaceAll("%20", " ");
     console.log(params, "<<< params");
     const rows = await pool.query(
       `SELECT * FROM opportunities WHERE categories="${params}";`
@@ -191,6 +190,20 @@ api.get(
   },
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
+
+api.get(
+  "/opportunities/opportunity/{opp_id}",
+  async function ({ pathParams }) {
+    const {opp_id} = pathParams   
+    const rows = await pool.query(
+      `SELECT * FROM opportunities WHERE opp_id="${opp_id}";`
+    );
+    const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
+    return { opportunity: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 
 //POST opportunities
 
