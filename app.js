@@ -156,6 +156,21 @@ api.delete(
   { success: { contentType: "application/json" }, error: { code: 403 } }
 );
 
+//GET opportunities by id
+
+api.get(
+  "/opportunities/opportunity/{opp_id}",
+  async function ({ pathParams }) {
+    const { opp_id } = pathParams;
+    const rows = await pool.query(
+      `SELECT * FROM opportunities WHERE opp_id="${opp_id}";`
+    );
+    const result = Object.values(JSON.parse(JSON.stringify(rows[0])));
+    return { opportunity: result };
+  },
+  { success: { contentType: "application/json" }, error: { code: 403 } }
+);
+
 //GET opportunities by category
 
 api.get(
